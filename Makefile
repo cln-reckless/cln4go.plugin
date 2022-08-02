@@ -15,6 +15,9 @@ fmt:
 lint:
 	golangci-lint run
 
+check_fmt:
+	test -z "$(gofmt -s -l $(find . -name '*.go' -type f -print) | tee /dev/stderr)"
+
 check:
 	$(CC) test -v ./...
 
