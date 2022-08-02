@@ -21,10 +21,11 @@ jobs:
 
       - name: Format
         run: if [ "$(gofmt -l . | wc -l)" -gt 0 ]; then exit 1; fi
-        if: matrix.os == 'ubuntu-latest'
 
       - name: Go test
         run: make check_fmt
 
       - name: Go check build
-        run: make build
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.47.3
+          make

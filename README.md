@@ -14,12 +14,13 @@
 
 ## Table of Content
 
-- Packages
+- Introduction
 - How to use
 - How to contribute
+- Build with
 - License
 
-## Packages
+## Introduction
 
 TODO
 
@@ -27,9 +28,9 @@ TODO
 
 Please look inside the test for the moment
 
-## How to contribute
+## Build with
 
-TODO
+- [Package structure](https://github.com/golang-standards/project-layout)
 
 ## License
 

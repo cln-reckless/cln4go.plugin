@@ -21,7 +21,7 @@ check_fmt:
 check:
 	$(CC) test -v ./...
 
-build_plugin:
+build:
 	env GOOS=$(OS) GOARCH=$(ARCH) GOARM=$(ARM) $(CC) build -o $(NAME)-$(OS)-$(ARCH) cmd/plugin.go
 
 dep:
