@@ -11,9 +11,9 @@
   outputs = { self, nixpkgs, flake-utils, goflake, rust-overlay, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        overlays = [ (import rust-overlay) ];
-        pkgs = import nixpkgs {
-          inherit system overlays;
+       pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ rust-overlay.overlay ];
         };
       in {
         packages = {
@@ -26,7 +26,8 @@
             # build dependencies
             libcap
             gcc
-            clang
+            pkg-config
+            git
 
             gnumake
             golangci-lint
@@ -42,8 +43,8 @@
 
           shellHook = ''
             export CGO_ENABLED=0
-            export RUSTUP_HOME=${pkgs.rustup}
-            export CARGO_HOME=${pkgs.cargo}
+            export HOST_CC=gcc
+
             make dep
           '';
         };
