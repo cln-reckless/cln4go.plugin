@@ -32,6 +32,7 @@ force:
 
 integration:
 	@make default
+	cd cln-integration; make fmt
 	cd cln-integration; make check
 
 

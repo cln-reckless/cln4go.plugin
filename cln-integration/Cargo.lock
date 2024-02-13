@@ -229,6 +229,7 @@ dependencies = [
  "clightning-testing",
  "env_logger",
  "log",
+ "serde_json",
  "tokio",
 ]
 

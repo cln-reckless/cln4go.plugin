@@ -3,7 +3,7 @@ FMT=fmt
 
 OPTIONS=
 
-default: fmt
+default:
 	$(CC) build
 	@make clippy
 
