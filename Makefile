@@ -16,9 +16,6 @@ fmt:
 lint:
 	golangci-lint run
 
-check_fmt:
-	test -z "$(gofmt -s -l $(find . -name '*.go' -type f -print) | tee /dev/stderr)"
-
 check:
 	$(CC) test -v ./...
 
@@ -32,3 +29,10 @@ force:
 	$(CC) get -u all
 	$(CC) get -u github.com/vincenzopalazzo/cln4go@$(GORPC_COMMIT)
 	@make dep
+
+integration:
+	@make default
+	cd cln-integration; make check
+
+clean:
+	cd cln-integration; make clean
