@@ -4,16 +4,16 @@ import (
 	"os"
 	"testing"
 
-	"github.com/vincenzopalazzo/cln4go/client"
+	cln4go "github.com/vincenzopalazzo/cln4go/client"
 )
 
 func TestCallFistMethod(t *testing.T) {
 	path := os.Getenv("CLN_UNIX_SOCKET")
-	client, err := client.NewUnix(path)
+	client, err := cln4go.NewUnix(path)
 	if err != nil {
 		panic(err)
 	}
-	response, err := client.Call("hello", make(map[string]interface{}))
+	response, err := cln4go.Call[map[string]any, map[string]any](client, "hello", map[string]any{})
 	if err != nil {
 		panic(err)
 	}

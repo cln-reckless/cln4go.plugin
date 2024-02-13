@@ -5,6 +5,7 @@ BASE_DIR=/script
 OS=linux
 ARCH=386
 ARM=
+GORPC_COMMIT=4471a927bb9937a45a9ece876c3e00f093727fc3
 
 default: fmt lint
 	$(CC) build -o $(NAME) cmd/plugin.go
@@ -26,3 +27,8 @@ build:
 
 dep:
 	$(CC) mod vendor
+
+force:
+	$(CC) get -u all
+	$(CC) get -u github.com/vincenzopalazzo/cln4go@$(GORPC_COMMIT)
+	@make dep

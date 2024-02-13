@@ -8,14 +8,10 @@ import (
 
 type PluginState struct{}
 
-type Hello[T PluginState] struct{}
-
-func (instance *Hello[T]) Call(plugin *plugin.Plugin[T], request map[string]any) (map[string]any, error) {
+func Hello(plugin *plugin.Plugin[*PluginState], request map[string]any) (map[string]any, error) {
 	return map[string]any{"message": "hello from cln4go.template"}, nil
 }
 
-type OnShutdown[T PluginState] struct{}
-
-func (instance *OnShutdown[T]) Call(plugin *plugin.Plugin[T], request map[string]any) {
+func OnShutdown(plugin *plugin.Plugin[*PluginState], request map[string]any) {
 	os.Exit(0)
 }

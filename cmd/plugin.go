@@ -8,9 +8,9 @@ import (
 
 func main() {
 	state := core.PluginState{}
-	plugin := plugin.New(&state, true, plugin.DummyOnInit[core.PluginState])
+	plugin := plugin.New(&state, true, plugin.DummyOnInit[*core.PluginState])
 	plugin.RegisterOption("foo", "string", "Hello Go", "An example of option", false)
-	plugin.RegisterRPCMethod("hello", "", "an example of rpc method", &core.Hello[core.PluginState]{})
-	plugin.RegisterNotification("shutdown", &core.OnShutdown[core.PluginState]{})
+	plugin.RegisterRPCMethod("hello", "", "an example of rpc method", core.Hello)
+	plugin.RegisterNotification("shutdown", core.OnShutdown)
 	plugin.Start()
 }
